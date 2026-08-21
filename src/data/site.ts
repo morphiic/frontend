@@ -397,3 +397,267 @@ export const RECENT_PIPELINES = [
 ];
 
 export const ICONS = { ArrowRight, HardDrive };
+
+/* =========================================================================
+   AURALIS AI PRODUCT DATA
+   ========================================================================= */
+
+export type AuralisHeroStat = {
+  value: string;
+  label: string;
+  sublabel: string;
+};
+
+export const AURALIS_HERO_STATS: AuralisHeroStat[] = [
+  { value: '240+', label: 'Schema Formats', sublabel: 'Auto-detected & normalized' },
+  { value: '10x', label: 'Ingestion Speed', sublabel: 'GPU-accelerated pipelines' },
+  { value: '99.8%', label: 'Quality Precision', sublabel: 'Automated anomaly detection' },
+  { value: '<50ms', label: 'Stream Latency', sublabel: 'Real-time inference & enrichment' },
+];
+
+export type AuralisModule = {
+  id: string;
+  title: string;
+  badge: string;
+  tagline: string;
+  description: string;
+  highlights: string[];
+  metrics: { label: string; val: string }[];
+};
+
+export const AURALIS_MODULES: AuralisModule[] = [
+  {
+    id: 'transformation',
+    title: 'Autonomous Schema Harmonization',
+    badge: 'CORE ENGINE',
+    tagline: 'Eliminate manual schema mapping and tedious ETL script maintenance.',
+    description:
+      'Auralis AI ingests structured, semi-structured, and polymorphic data across 240+ enterprise formats. It automatically infers schema topology, harmonizes disparate field definitions, and constructs unified relational or document representations in milliseconds.',
+    highlights: [
+      'Zero-code semantic schema alignment and type reconciliation',
+      'Continuous handling of schema drift without pipeline interruptions',
+      'Cross-database dialect conversion (SQL, NoSQL, Columnar, Parquet)',
+      'Deterministic transformation lineage and auditable change logs',
+    ],
+    metrics: [
+      { label: 'Manual ETL Reduction', val: '85%' },
+      { label: 'Schema Coverage', val: '240+ Types' },
+    ],
+  },
+  {
+    id: 'enrichment',
+    title: 'Contextual Semantic Enrichment',
+    badge: 'NEURAL LAYER',
+    tagline: 'Infuse raw records with deep enterprise domain intelligence.',
+    description:
+      'Raw data lacks contextual clarity. Auralis AI embeds custom language models directly into your processing stream to detect entities, classify document semantics, resolve ambiguous acronyms, and append synthetic attributes without calling external third-party APIs.',
+    highlights: [
+      'Automated Named Entity Recognition (NER) across industry domains',
+      'Context-aware classification and sentiment/intent tagging',
+      'Knowledge-graph linkage and internal taxonomy mapping',
+      'Air-gapped semantic processing keeping private data completely isolated',
+    ],
+    metrics: [
+      { label: 'Metadata Enrichment', val: '18+ Signals' },
+      { label: 'Privacy Isolation', val: '100% On-Prem / VPC' },
+    ],
+  },
+  {
+    id: 'quality',
+    title: 'Self-Healing Quality Guardian',
+    badge: 'DATA INTEGRITY',
+    tagline: 'Proactively flag anomalies and deduplicate records before downstream use.',
+    description:
+      'Poor data quality quietly degrades AI models and analytics. Auralis AI continuously applies machine-learning classifiers to detect subtle duplicate records, out-of-distribution values, missing values, and corrupted data streams in real time.',
+    highlights: [
+      'Probabilistic record deduplication across distributed data sources',
+      'Real-time anomaly detection for outliers and statistical drift',
+      'Automated rule suggestion based on observed data distributions',
+      'Granular quality scoring per table, column, and record batch',
+    ],
+    metrics: [
+      { label: 'Deduplication Accuracy', val: '99.4%' },
+      { label: 'Anomaly Catch Rate', val: '99.8%' },
+    ],
+  },
+  {
+    id: 'serving',
+    title: 'High-Throughput Streaming Engine',
+    badge: 'PRODUCTION SCALE',
+    tagline: 'Process multi-terabyte workloads with low latency and elastic scale.',
+    description:
+      'Engineered for mission-critical enterprise environments, Auralis AI dynamically balances batch processing and live event streams. Dynamic batching and parallel execution ensure steady throughput even during massive ingestion spikes.',
+    highlights: [
+      'Sub-50ms p99 latency on high-frequency streaming event topics',
+      'Dynamic concurrent model scheduling and dynamic batching',
+      'Bi-directional synchronization with modern lakehouses and data warehouses',
+      'Enterprise-grade observability, health telemetry, and SLA alerting',
+    ],
+    metrics: [
+      { label: 'Throughput', val: '12.8M Rec/sec' },
+      { label: 'Uptime SLA', val: '99.99%' },
+    ],
+  },
+];
+
+export type AuralisWorkflowStep = {
+  phase: string;
+  title: string;
+  description: string;
+  capabilities: string[];
+  techRef: string;
+};
+
+export const AURALIS_WORKFLOW: AuralisWorkflowStep[] = [
+  {
+    phase: '01. INGESTION & DISCOVERY',
+    title: 'Multi-Source Zero-Loss Ingest',
+    description: 'Connect databases, event streams, files, and SaaS APIs with automatic protocol negotiation and data validation.',
+    capabilities: ['Kafka & Kinesis stream connectors', 'Direct DB CDC & Lakehouse connectors', 'High-throughput memory bandwidth'],
+    techRef: 'Hardware-Level CUDA Acceleration',
+  },
+  {
+    phase: '02. NEURAL UNDERSTANDING',
+    title: 'Structural & Semantic Parsing',
+    description: 'Custom neural models analyze field semantics, detect underlying relationships, and classify ambiguous records.',
+    capabilities: ['Dynamic schema topology detection', 'Domain-specific NER parsing', 'Zero third-party API exposure'],
+    techRef: 'NVIDIA NeMo Framework',
+  },
+  {
+    phase: '03. GPU TRANSFORMATION',
+    title: 'High-Speed Normalization',
+    description: 'Transform complex polymorphic records into unified relational and analytical tables at GPU compute velocity.',
+    capabilities: ['GPU-accelerated vector transformation', '240+ schema standardization', 'Memory-optimized execution'],
+    techRef: 'NVIDIA RAPIDS (cuDF)',
+  },
+  {
+    phase: '04. QUALITY & DEDUPLICATION',
+    title: 'Automated Integrity Verification',
+    description: 'Apply machine-learning algorithms to detect duplicates, isolate anomalies, and enforce governance rules.',
+    capabilities: ['ML-driven fuzzy deduplication', 'Statistical outlier detection', 'Real-time quality scoring'],
+    techRef: 'NVIDIA RAPIDS (cuML)',
+  },
+  {
+    phase: '05. ENTERPRISE DELIVERY',
+    title: 'Stream & Warehouse Dispatch',
+    description: 'Deliver structured, enriched, validated, and AI-ready datasets directly to analytics, ML models, and LLMs.',
+    capabilities: ['Real-time event push', 'Lakehouse table publishing', 'Low-latency query endpoints'],
+    techRef: 'NVIDIA Triton Inference Server',
+  },
+];
+
+export type AuralisTechStackItem = {
+  name: string;
+  role: string;
+  description: string;
+  benefits: string[];
+  badge: string;
+};
+
+export const AURALIS_TECH_STACK: AuralisTechStackItem[] = [
+  {
+    name: 'NVIDIA RAPIDS (cuDF & cuML)',
+    role: 'Core Data Science & Transformation Engine',
+    description:
+      'Powers the high-speed GPU-accelerated ETL and ML quality framework. cuDF transforms fragmented inputs into structured formats across 240+ schemas at GPU speed, while cuML trains machine learning models to detect duplicates and anomalies.',
+    benefits: ['GPU-accelerated Pandas & Scikit-learn', 'Instant ETL across 240+ schema types', 'ML-driven duplicate & anomaly detection'],
+    badge: 'CORE COMPUTE',
+  },
+  {
+    name: 'NVIDIA NeMo Framework',
+    role: 'Language & Semantic Enrichment Engine',
+    description:
+      'Provides the enterprise-grade toolchain required to fine-tune custom LLMs and Named Entity Recognition (NER) models. Extracts contextual metadata and enriches unstructured records without relying on external third-party APIs.',
+    benefits: ['Custom domain-fine-tuned LLMs', 'Contextual entity & metadata extraction', 'Zero external API dependencies / 100% private'],
+    badge: 'NEURAL LAYER',
+  },
+  {
+    name: 'NVIDIA Triton Inference Server',
+    role: 'Production Serving & Scalable Backend',
+    description:
+      'Manages concurrent model execution, dynamic batching, and multi-framework workloads to host multi-stage transformation and enrichment models across continuous enterprise data streams with low latency.',
+    benefits: ['Concurrent multi-model execution', 'Low-latency dynamic batching', 'Continuous enterprise stream serving'],
+    badge: 'MODEL SERVING',
+  },
+  {
+    name: 'NVIDIA CUDA Toolkit',
+    role: 'Parallel Computing & Memory Acceleration',
+    description:
+      'Foundational computing platform providing low-level compiler tools and libraries to build custom kernels for hardware-level data restructuring, format conversions, and maximum memory bandwidth during ingestion spikes.',
+    benefits: ['Custom GPU restructuring kernels', 'Maximum memory throughput', 'Hardware-optimized data conversions'],
+    badge: 'FOUNDATIONAL',
+  },
+];
+
+export type AuralisUseCase = {
+  title: string;
+  category: string;
+  challenge: string;
+  solution: string;
+  outcome: string;
+};
+
+export const AURALIS_USE_CASES: AuralisUseCase[] = [
+  {
+    title: 'Enterprise Data Lake Consolidation',
+    category: 'Data Engineering & Platform',
+    challenge: 'Dozens of siloed databases and ERP systems resulting in incompatible tables, weeks of manual ETL script maintenance, and stale data.',
+    solution: 'Auralis AI autonomously ingests and maps 240+ schemas into unified lakehouse tables with zero code intervention.',
+    outcome: '90% reduction in data prep turnaround; daily ingestion pipelines finish in minutes rather than hours.',
+  },
+  {
+    title: 'Real-Time Financial Intelligence',
+    category: 'Fintech & Capital Markets',
+    challenge: 'High-frequency transaction records with heterogeneous schemas, ambiguous vendor names, and latent duplicate entries.',
+    solution: 'GPU-accelerated stream normalization with cuDF and cuML for instant deduplication and NeMo for merchant entity resolution.',
+    outcome: 'Sub-50ms transaction enrichment and 99.8% accurate anomaly detection before downstream ledger posting.',
+  },
+  {
+    title: 'GenAI & LLM Training Data Preparation',
+    category: 'AI & Machine Learning',
+    challenge: 'Unstructured enterprise documents and customer interactions filled with noise, sensitive information, and formatting errors.',
+    solution: 'Self-hosted NeMo and Triton pipelines parse, clean, redact, and enrich training corpora entirely within on-premise security boundaries.',
+    outcome: 'High-fidelity token datasets generated 8x faster with guaranteed compliance and zero third-party API exposure.',
+  },
+  {
+    title: 'Healthcare & Clinical Records Harmonization',
+    category: 'HealthTech & Life Sciences',
+    challenge: 'EHR systems and clinical labs generating non-standardized diagnostics, proprietary codes, and unstructured clinical notes.',
+    solution: 'Auralis AI applies custom clinical NER models to extract medical entities, normalize terminology, and build compliant records.',
+    outcome: 'Interoperable clinical datasets ready for research analytics with zero manual transcription bottleneck.',
+  },
+];
+
+export type AuralisProductFAQ = {
+  question: string;
+  answer: string;
+};
+
+export const AURALIS_PRODUCT_FAQS: AuralisProductFAQ[] = [
+  {
+    question: 'How is Auralis AI different from traditional ETL/ELT tools?',
+    answer:
+      'Traditional ETL tools require data engineers to manually write, test, and maintain schema mapping rules for every new data source. Auralis AI uses accelerated AI models (NVIDIA RAPIDS & NeMo) to autonomously infer schemas, harmonize field definitions, enrich context, and validate data quality in real time with minimal manual configuration.',
+  },
+  {
+    question: 'Can Auralis AI be deployed entirely on-premise or within our private cloud (VPC)?',
+    answer:
+      'Yes. Auralis AI is engineered for total data sovereignty. With self-hosted models running on NVIDIA Triton Inference Server and NeMo, zero data leaves your security boundary—no third-party LLM API calls are made.',
+  },
+  {
+    question: 'How does Auralis AI handle high-volume data spikes?',
+    answer:
+      'Auralis AI leverages NVIDIA CUDA kernels and GPU-accelerated cuDF processing to achieve extreme parallel throughput (up to 12.8M records/sec). Ingestion spikes that usually stall CPU-based workers are processed seamlessly at hardware memory bandwidth.',
+  },
+  {
+    question: 'What data sources and destinations are supported out of the box?',
+    answer:
+      'Auralis AI connects natively to relational databases (PostgreSQL, MySQL, Oracle, SQL Server), cloud warehouses (Snowflake, BigQuery, Redshift, Databricks), stream brokers (Kafka, Kinesis, RabbitMQ), object storage (S3, GCS, Azure Blob), and 240+ standard enterprise file & API formats.',
+  },
+  {
+    question: 'How does Auralis AI detect duplicates and anomalies?',
+    answer:
+      'Auralis AI employs GPU-accelerated cuML machine learning algorithms to compute probabilistic similarity scores across fragmented records, recognizing duplicates even when names, formats, or addresses contain discrepancies, while flagging statistical anomalies in real time.',
+  },
+];
+

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const KEYFRAMES = `
 @keyframes arcFlicker {
@@ -205,15 +206,15 @@ export function Hero() {
             transition={{ delay: 0.65, duration: 0.7 }}
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <a
-              href="#dashboard-preview"
+            <Link
+              to="/product"
               className="group inline-flex items-center justify-center gap-1.5 rounded-md bg-accent-cyan !px-2.5 !py-1 !text-[10px] font-medium text-base-950 shadow-[0_0_24px_-6px_rgba(34,211,238,0.6)] transition-all duration-200 hover:bg-cyan-300 hover:shadow-[0_0_32px_-4px_rgba(34,211,238,0.8)] sm:!px-5 sm:!py-2.5 sm:!text-sm"
             >
-              Explore Morphiic
+              Explore Auralis AI
               <svg className="h-3 w-3 transition-transform group-hover:translate-x-0.5 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
             <a
               href="#how-it-works"
               className="group inline-flex items-center justify-center gap-1.5 rounded-md bg-base-700/40 !px-2.5 !py-1 !text-[10px] font-medium text-ink-200 backdrop-blur-sm transition-colors hover:text-ink-50 sm:!px-5 sm:!py-2.5 sm:!text-sm"

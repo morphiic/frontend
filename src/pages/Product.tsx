@@ -1,43 +1,39 @@
-import { motion } from 'framer-motion';
-import { ProductHero } from '@/components/sections/ProductHero';
-import { ProductSidebar } from '@/components/sections/ProductSidebar';
-import { ProductDashboard } from '@/components/sections/ProductDashboard';
-import { PipelineEditor } from '@/components/sections/PipelineEditor';
-import { DataQualityPanel } from '@/components/sections/DataQualityPanel';
-import { TechnologyShowcase } from '@/components/sections/TechnologyShowcase';
-import { TechLabel } from '@/components/ui/TechLabel';
+import { useEffect } from 'react';
+import { AuralisHero } from '@/components/product/AuralisHero';
+import { AuralisModules } from '@/components/product/AuralisModules';
+import { AuralisWorkflow } from '@/components/product/AuralisWorkflow';
+import { AuralisTechStack } from '@/components/product/AuralisTechStack';
+import { AuralisUseCases } from '@/components/product/AuralisUseCases';
+import { AuralisFAQ } from '@/components/product/AuralisFAQ';
+import { AuralisCTA } from '@/components/product/AuralisCTA';
 
 export function Product() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-base-950">
-      <ProductHero />
+    <div className="relative min-h-screen bg-base-950 font-sans text-ink-50 selection:bg-accent-cyan/20 selection:text-white">
+      {/* 1. Hero Section */}
+      <AuralisHero />
 
-      {/* Dashboard shell */}
-      <div className="mx-auto max-w-7xl px-4 pb-24 md:px-6">
-        <div className="flex">
-          <ProductSidebar />
+      {/* 2. Core Capabilities & Product Modules */}
+      <AuralisModules />
 
-          <div className="flex-1 space-y-6 px-4 py-6 md:px-6">
-            {/* Terminal-style header */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-base-400/60 bg-base-900/60 px-5 py-3"
-            >
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-accent-cyan" />
-                <TechLabel bright>DATA OPERATIONS / OVERVIEW</TechLabel>
-              </div>
-              <TechLabel className="text-[0.6rem]">SESSION: 0xA4F2 · LIVE</TechLabel>
-            </motion.div>
+      {/* 3. Execution Pipeline & End-to-End Workflow */}
+      <AuralisWorkflow />
 
-            <ProductDashboard />
-            <PipelineEditor />
-            <DataQualityPanel />
-            <TechnologyShowcase />
-          </div>
-        </div>
-      </div>
+      {/* 4. Underlying Acceleration & Tech Stack */}
+      <AuralisTechStack />
+
+      {/* 5. Enterprise Use Cases & Impact */}
+      <AuralisUseCases />
+
+      {/* 6. Product FAQ */}
+      <AuralisFAQ />
+
+      {/* 7. Conversion CTA */}
+      <AuralisCTA />
     </div>
   );
 }
