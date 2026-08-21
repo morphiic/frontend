@@ -13,7 +13,7 @@ export function About() {
               <TechLabel bright>About</TechLabel>
             </div>
             <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight text-ink-50 sm:text-4xl">
-              A New Transformation Layer for Enterprise Data
+              A Smarter Way to Prepare Enterprise Data for What&apos;s Next
             </h2>
           </div>
         </FadeIn>
@@ -23,18 +23,19 @@ export function About() {
             <div className="grid-bg-fine pointer-events-none absolute inset-0 opacity-30" />
             <div className="relative space-y-5 text-base leading-relaxed text-ink-300">
               <p>
-                Morphiic exists to simplify the complex process of preparing enterprise data for
-                modern analytics and AI systems. Where teams once spent weeks on schema mapping,
-                cleaning, and enrichment, Morphiic applies an intelligent transformation layer that
-                automates the work end-to-end.
+                Your teams shouldn&apos;t have to spend weeks cleaning, mapping, restructuring, and
+                enriching data before they can put it to work. We provide an intelligent transformation
+                layer that helps businesses bring data from databases, APIs, applications, files, and
+                operational systems into a more consistent and usable form — without adding unnecessary
+                complexity to the data stack.
               </p>
               <p>
-                The platform ingests data from any source — databases, APIs, files, applications,
-                operational systems — and delivers structured, enriched, validated, and AI-ready
-                intelligence back to the systems that depend on it.
+                From the moment your data enters Morphiic, it can be transformed, standardized,
+                enriched, and validated before reaching the analytics, machine learning, and AI systems
+                that depend on it.
               </p>
               <div className="flex flex-wrap gap-2 border-t border-base-400/60 pt-5">
-                {['AI-Powered', 'Automated', 'Enriched', 'Validated', 'Scalable'].map((t) => (
+                {['AI-POWERED', 'AUTOMATED', 'ENRICHED', 'VALIDATED', 'SCALABLE'].map((t) => (
                   <span key={t} className="rounded-full border border-base-400/60 bg-base-800/50 px-3 py-1 tech-label text-[0.6rem]">
                     {t}
                   </span>

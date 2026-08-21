@@ -8,6 +8,7 @@ import { LinkButton } from '@/components/ui/Button';
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState('');
   const location = useLocation();
 
   useEffect(() => {
@@ -22,6 +23,34 @@ export function Navbar() {
   }, [location.pathname]);
 
   const isProduct = location.pathname.startsWith('/product');
+
+  useEffect(() => {
+    if (isProduct) {
+      setActiveId('');
+      return;
+    }
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.href.slice(1))).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+
+    const onScroll = () => {
+      const marker = window.scrollY + 120;
+      let current = '';
+      for (const section of sections) {
+        const top = section.getBoundingClientRect().top + window.scrollY;
+        if (top <= marker) current = section.id;
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        current = sections[sections.length - 1].id;
+      }
+      setActiveId(current);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isProduct, location.pathname]);
 
   return (
     <header
@@ -43,16 +72,25 @@ export function Navbar() {
         {/* Desktop links */}
         {!isProduct && (
           <div className="hidden items-center gap-1 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="group relative px-3.5 py-2 text-sm text-ink-300 transition-colors hover:text-ink-50"
-              >
-                {link.label}
-                <span className="absolute inset-x-3.5 bottom-1 h-px origin-left scale-x-0 bg-accent-cyan/60 transition-transform duration-300 group-hover:scale-x-100" />
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const active = activeId === link.href.slice(1);
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`group relative px-3.5 py-2 text-sm transition-colors hover:text-ink-50 ${
+                    active ? 'text-ink-50' : 'text-ink-300'
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute inset-x-3.5 bottom-1 h-px origin-left bg-accent-cyan/60 transition-transform duration-300 group-hover:scale-x-100 ${
+                      active ? 'scale-x-100' : 'scale-x-0'
+                    }`}
+                  />
+                </a>
+              );
+            })}
           </div>
         )}
         {isProduct && (
@@ -63,7 +101,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <LinkButton to="/product" variant="primary" className="text-xs">
-            Explore Product
+            Auralis AI
           </LinkButton>
         </div>
 
@@ -89,20 +127,25 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {!isProduct &&
-                NAV_LINKS.map((link, i) => (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04 }}
-                    className="rounded-md px-3 py-2.5 text-sm text-ink-300 hover:bg-base-700/60 hover:text-ink-50"
-                  >
-                    {link.label}
-                  </motion.a>
-                ))}
+                NAV_LINKS.map((link, i) => {
+                  const active = activeId === link.href.slice(1);
+                  return (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04 }}
+                      className={`rounded-md px-3 py-2.5 text-sm hover:bg-base-700/60 hover:text-ink-50 ${
+                        active ? 'bg-base-700/60 text-ink-50' : 'text-ink-300'
+                      }`}
+                    >
+                      {link.label}
+                    </motion.a>
+                  );
+                })}
               <LinkButton to="/product" variant="primary" className="mt-3 w-full">
-                Explore Product
+                Auralis AI
               </LinkButton>
             </div>
           </motion.div>

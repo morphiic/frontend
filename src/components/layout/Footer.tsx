@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Boxes, Github, Linkedin, Twitter } from 'lucide-react';
-import { NAV_LINKS } from '@/data/site';
 
 export function Footer() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const sectionHref = (href: string) => (href.startsWith('#') && !isHome ? `/${href}` : href);
+
   return (
     <footer className="relative border-t border-base-400/60 bg-base-950">
       <div className="grid-bg-fine pointer-events-none absolute inset-0 opacity-30" />
       <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-10">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           {/* Brand */}
           <div className="max-w-sm">
             <Link to="/" className="flex items-center gap-2.5">
@@ -34,24 +37,24 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nav */}
-          <FooterCol title="Platform" links={[...NAV_LINKS, { label: 'Product', href: '/product' }]} internal />
+          {/* Platform */}
           <FooterCol
-            title="Resources"
+            title="Platform"
             links={[
-              { label: 'Documentation', href: '#docs' },
-              { label: 'API Reference', href: '#docs' },
-              { label: 'Pricing', href: '#pricing' },
-              { label: 'FAQ', href: '#faq' },
+              { label: 'Features', href: sectionHref('#features') },
+              { label: 'Home', href: sectionHref('#home') },
+              { label: 'Services', href: sectionHref('#capabilities') },
+              { label: 'Pricing', href: sectionHref('#pricing') },
             ]}
           />
+          {/* Company */}
           <FooterCol
             title="Company"
             links={[
-              { label: 'About', href: '#about' },
-              { label: 'Contact', href: '#contact' },
-              { label: 'Security', href: '#' },
-              { label: 'Privacy', href: '#' },
+              { label: 'About', href: sectionHref('#about') },
+              { label: 'Contact', href: sectionHref('#contact') },
+              { label: 'Privacy', href: '/privacy' },
+              { label: 'Terms', href: '/terms' },
             ]}
           />
         </div>

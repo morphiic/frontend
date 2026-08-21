@@ -1,4 +1,5 @@
 import { Hero } from '@/components/hero/Hero';
+import { HeroAboutBand } from '@/components/hero/HeroAboutBand';
 import { Overview } from '@/components/sections/Overview';
 import { Problem } from '@/components/sections/Problem';
 import { Features } from '@/components/sections/Features';
@@ -18,12 +19,13 @@ export function Home() {
   return (
     <>
       <Hero />
+
       <Overview />
       <Problem />
       <Features />
       <Capabilities />
       <HowItWorks />
-      <ArchitectureDiagram />
+ 
       <DashboardPreview />
       <TargetUsers />
       <Scalability />

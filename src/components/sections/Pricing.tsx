@@ -1,18 +1,31 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { Section, FadeIn } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { TechLabel } from '@/components/ui/TechLabel';
 import { Button } from '@/components/ui/Button';
+import { PaymentPopup } from '@/components/ui/PaymentPopup';
 import { PLANS } from '@/data/site';
 
 export function Pricing() {
+  const [popup, setPopup] = useState<{ open: boolean; planName: string; amount: number; currency: string }>({
+    open: false,
+    planName: '',
+    amount: 0,
+    currency: 'USD',
+  });
+
+  const openPopup = (planName: string, amount: number, currency: string) => {
+    setPopup({ open: true, planName, amount, currency });
+  };
+
   return (
     <Section id="pricing">
       <SectionHeading
         label="Pricing"
-        title="Built for Every Stage of Data Maturity"
-        description="From experimentation to enterprise-scale transformation — subscription SaaS, enterprise licensing, and usage-based models."
+        title="A Data Transformation Model That Grows With Your Business"
+        description="Your data needs change as your organization grows. Morphiic gives you flexible ways to scale from early transformation workflows to enterprise-wide data operations — without forcing your business into a one-size-fits-all model."
       />
 
       <div className="mt-14 grid gap-4 lg:grid-cols-3">
@@ -41,7 +54,14 @@ export function Pricing() {
               </div>
               <p className="mt-1 text-sm text-ink-400">{plan.tagline}</p>
 
-              <p className="mt-5 text-sm leading-relaxed text-ink-300">{plan.description}</p>
+              {plan.priceAmount !== undefined && plan.priceAmount > 0 && (
+                <div className="mt-4 flex items-baseline gap-1">
+                  <span className="text-3xl font-bold text-ink-50">${plan.priceAmount}</span>
+                  <span className="text-sm text-ink-400">/mo</span>
+                </div>
+              )}
+
+              <p className="mt-4 text-sm leading-relaxed text-ink-300">{plan.description}</p>
 
               <ul className="mt-6 flex-1 space-y-3">
                 {plan.features.map((f) => (
@@ -55,9 +75,31 @@ export function Pricing() {
               </ul>
 
               <div className="mt-8">
-                <Button variant={plan.highlighted ? 'primary' : 'secondary'} className="w-full">
-                  {plan.cta}
-                </Button>
+                {plan.priceAmount !== undefined ? (
+                  <Button
+                    variant={plan.highlighted ? 'primary' : 'secondary'}
+                    className="w-full"
+                    onClick={() => openPopup(plan.name, plan.priceAmount!, plan.currency ?? 'USD')}
+                  >
+                    {plan.cta}
+                  </Button>
+                ) : plan.name === 'Developer' ? (
+                  <Button
+                    variant="secondary"
+                    className="w-full"
+                    onClick={() => openPopup('Business', 45, 'USD')}
+                  >
+                    {plan.cta}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    className="w-full"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    {plan.cta}
+                  </Button>
+                )}
               </div>
             </motion.div>
           </FadeIn>
@@ -73,6 +115,14 @@ export function Pricing() {
           ))}
         </div>
       </FadeIn>
+
+      <PaymentPopup
+        open={popup.open}
+        onClose={() => setPopup((p) => ({ ...p, open: false }))}
+        planName={popup.planName}
+        amount={popup.amount}
+        currency={popup.currency}
+      />
     </Section>
   );
 }

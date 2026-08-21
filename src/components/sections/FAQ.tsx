@@ -13,7 +13,7 @@ export function FAQ() {
     <Section id="faq" className="border-y border-base-400/40 bg-base-900/30">
       <SectionHeading
         label="FAQ"
-        title="Frequently Asked Questions"
+        title="From Data Complexity to Clear Answers"
         description="Everything you need to know about how Morphiic transforms enterprise data."
       />
 

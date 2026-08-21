@@ -55,75 +55,122 @@ export const DATA_OUTPUTS: Output[] = [
 export type Feature = {
   icon: LucideIcon;
   title: string;
+  subtitle: string;
   description: string;
+  closing: string;
   meta: string;
 };
 
 export const FEATURES: Feature[] = [
   {
     icon: Cpu,
-    title: 'AI Data Transformation',
-    description: 'Automate complex enterprise transformation workflows with intelligent processing.',
-    meta: 'AI_ENGINE · v3.2',
+    title: 'Transform Your Data Automatically',
+    subtitle: 'Spend Less Time Building Transformations by Hand',
+    description: 'Instead of manually restructuring and preparing every dataset, let Morphiic handle complex transformation workflows with intelligent processing. Transform schemas, restructure information, convert formats, and automate repetitive preparation work — so your engineering team can focus on higher-value data initiatives.',
+    closing: 'Your data changes. Your workflow keeps moving.',
+    meta: 'AI_ENGINE · V3.2',
   },
   {
     icon: Workflow,
-    title: 'Automated Data Processing',
-    description: 'Process large-scale datasets efficiently across distributed pipelines.',
-    meta: 'THROUGHPUT · 12.8M rec/s',
+    title: 'Process Data at Enterprise Scale',
+    subtitle: 'Keep Up as Your Data Grows',
+    description: 'As your data volumes increase, your transformation workflows need to keep pace. Morphiic helps you process large-scale datasets through scalable processing pipelines, giving you the capacity to handle demanding workloads without turning data operations into a bottleneck.',
+    closing: 'More data shouldn\'t mean more complexity.',
+    meta: 'THROUGHPUT · 12.8M REC/S',
   },
   {
     icon: Layers,
-    title: 'Data Standardization',
-    description: 'Normalize inconsistent structures and formats into unified schemas.',
-    meta: 'SCHEMA_MAP · 240+ types',
+    title: 'Bring Your Data Into One Consistent Structure',
+    subtitle: 'Stop Losing Time to Incompatible Formats',
+    description: 'Your enterprise data rarely arrives in the same shape. Morphiic helps normalize different structures, formats, and schemas into consistent datasets that are easier to integrate, analyze, and use across your organization.',
+    closing: 'Different sources. One dependable data foundation.',
+    meta: 'SCHEMA_MAP · 240+ TYPES',
   },
   {
     icon: Sparkles,
-    title: 'Intelligent Data Enrichment',
-    description: 'Add contextual intelligence and metadata to every record.',
-    meta: 'ENRICH · 18 sources',
+    title: 'Give Your Data More Context',
+    subtitle: 'Turn Raw Records Into More Meaningful Information',
+    description: 'Clean data is useful. Context-rich data is even more powerful. Morphiic enriches your information with metadata, entity intelligence, and contextual signals, helping you create datasets that are more informative and valuable for downstream analytics and AI workloads.',
+    closing: 'Add context before intelligence begins.',
+    meta: 'ENRICH · 18 SOURCES',
   },
   {
     icon: ShieldCheck,
-    title: 'Data Quality Optimization',
-    description: 'Validate, clean, and improve data reliability continuously.',
-    meta: 'QUALITY · 97.8% score',
+    title: 'Know You Can Trust Your Data',
+    subtitle: 'Catch Data Problems Before They Reach Your AI',
+    description: 'Inconsistent, duplicated, or invalid information can affect everything downstream. Morphiic continuously helps you validate, clean, standardize, and monitor your datasets — giving your teams greater confidence in the information powering analytics and AI.',
+    closing: 'Better quality in. More reliable outcomes out.',
+    meta: 'QUALITY · 97.8% SCORE',
   },
   {
     icon: Gauge,
-    title: 'AI-Ready Data Preparation',
-    description: 'Create structured datasets ready for analytics and AI workloads.',
-    meta: 'OUTPUT · AI-ready',
+    title: 'Prepare Data for What Comes Next',
+    subtitle: 'Give Your AI Systems the Foundation They Need',
+    description: 'Your AI initiatives shouldn\'t be held back by data preparation. Morphiic transforms fragmented enterprise information into structured, enriched, and validated datasets ready to support analytics, machine learning, automation, and AI applications.',
+    closing: 'From raw enterprise data to AI-ready intelligence.',
+    meta: 'OUTPUT · AI-READY',
   },
 ];
 
 export type CapabilityGroup = {
   title: string;
+  subtitle: string;
   icon: LucideIcon;
   items: string[];
+  closing: string;
 };
 
 export const CAPABILITIES: CapabilityGroup[] = [
   {
     title: 'Transformation Engine',
+    subtitle: 'Shape Your Data for What Comes Next',
     icon: Cpu,
-    items: ['Data restructuring', 'Schema transformation', 'Format conversion', 'Data normalization', 'Transformation automation'],
+    items: [
+      'Restructure complex datasets',
+      'Transform schemas across sources',
+      'Convert between data formats',
+      'Normalize inconsistent information',
+      'Automate repetitive transformations',
+    ],
+    closing: 'Less manual transformation work and more consistent data.',
   },
   {
     title: 'Processing Layer',
+    subtitle: 'Handle Data at the Speed Your Enterprise Demands',
     icon: Workflow,
-    items: ['Batch processing', 'Stream processing', 'Data parsing', 'Data classification', 'Processing optimization'],
+    items: [
+      'Process data in batches',
+      'Support streaming workflows',
+      'Parse complex information',
+      'Classify incoming data',
+      'Optimize processing performance',
+    ],
+    closing: 'Scalable processing without turning data volume into an operational bottleneck.',
   },
   {
     title: 'Enrichment Engine',
+    subtitle: 'Turn Raw Information Into Context-Rich Data',
     icon: Sparkles,
-    items: ['Entity identification', 'Metadata generation', 'Context extraction', 'Information augmentation'],
+    items: [
+      'Identify entities',
+      'Generate meaningful metadata',
+      'Extract contextual information',
+      'Augment existing datasets',
+    ],
+    closing: 'Data that carries more context, meaning, and downstream value.',
   },
   {
     title: 'Quality Framework',
+    subtitle: 'Build Confidence Into Every Dataset',
     icon: ShieldCheck,
-    items: ['Data validation', 'Duplicate detection', 'Normalization', 'Quality monitoring', 'Schema consistency'],
+    items: [
+      'Validate incoming data',
+      'Detect duplicate records',
+      'Normalize inconsistent information',
+      'Monitor data quality',
+      'Maintain schema consistency',
+    ],
+    closing: 'Cleaner, more reliable data you can confidently build on.',
   },
 ];
 
@@ -179,6 +226,8 @@ export type Plan = {
   cta: string;
   highlighted?: boolean;
   priceNote?: string;
+  priceAmount?: number;
+  currency?: string;
 };
 
 export const PLANS: Plan[] = [
@@ -188,7 +237,9 @@ export const PLANS: Plan[] = [
     description: 'Explore the Morphiic transformation engine with sample datasets and limited throughput.',
     features: ['API access', 'Sample datasets', 'Community support', 'Limited throughput', 'Single workspace'],
     cta: 'Start Free',
-    priceNote: 'Free to start',
+    priceNote: '$10/mo',
+    priceAmount: 10,
+    currency: 'USD',
   },
   {
     name: 'Business',
@@ -198,6 +249,8 @@ export const PLANS: Plan[] = [
     cta: 'Start Trial',
     highlighted: true,
     priceNote: 'Subscription SaaS',
+    priceAmount: 45,
+    currency: 'USD',
   },
   {
     name: 'Enterprise',
@@ -206,22 +259,23 @@ export const PLANS: Plan[] = [
     features: ['Dedicated deployment', 'Enterprise licensing', 'Usage-based transformation', 'SSO & SAML', 'Custom integrations', 'Dedicated support'],
     cta: 'Contact Sales',
     priceNote: 'Custom',
+    currency: 'USD',
   },
 ];
 
 export type FAQ = { q: string; a: string };
 
 export const FAQS: FAQ[] = [
-  { q: 'What is Morphiic?', a: 'Morphiic is an AI-powered data transformation engine that converts fragmented, unstructured enterprise data into structured, enriched, validated, and AI-ready intelligence.' },
-  { q: 'What types of data can Morphiic transform?', a: 'Morphiic works with data from databases, APIs, files, CRM, ERP, data lakes, applications, and operational systems — across structured, semi-structured, and unstructured formats.' },
-  { q: 'How does AI improve data transformation?', a: 'AI analyzes structure, infers schemas, maps formats, enriches context, and validates quality — automating work that traditionally requires extensive manual engineering.' },
-  { q: 'Can Morphiic handle large datasets?', a: 'Yes. Morphiic is built for enterprise-scale processing with distributed pipelines optimized for high-volume data throughput.' },
-  { q: 'Does Morphiic support batch and streaming workflows?', a: 'Both. The processing layer handles batch processing and real-time stream processing within the same pipeline framework.' },
-  { q: 'How does Morphiic improve data quality?', a: 'The quality framework validates, deduplicates, normalizes, and monitors schema consistency — continuously improving data reliability.' },
-  { q: 'Can Morphiic integrate with existing enterprise systems?', a: 'Yes. Morphiic connects to existing databases, APIs, applications, and cloud environments through its ingestion layer.' },
-  { q: 'Is Morphiic suitable for AI/ML workloads?', a: 'Absolutely. Morphiic produces AI-ready data specifically prepared for analytics, machine learning, and generative AI applications.' },
-  { q: 'Does Morphiic provide APIs?', a: 'Yes. Data transformation APIs, pipeline integration guides, and SDK references are part of the developer platform — currently coming soon.' },
-  { q: 'Is an enterprise deployment available?', a: 'Yes. Enterprise customers receive dedicated deployments with enterprise licensing, SSO, and custom integrations.' },
+  { q: 'What is Morphiic?', a: 'Morphiic is an AI-powered data transformation engine that helps enterprises transform fragmented data into structured, enriched, validated, and AI-ready information. It provides an intelligent layer for data processing, standardization, enrichment, and quality management.' },
+  { q: 'What business problems does Morphiic solve?', a: 'Morphiic helps reduce the manual effort involved in preparing enterprise data. It addresses fragmented data sources, inconsistent schemas, repetitive transformations, data quality issues, and the growing complexity of preparing information for analytics and AI.' },
+  { q: 'How does Morphiic fit into our existing data infrastructure?', a: 'Morphiic is designed to work as a transformation layer across your existing data environment. It can work with databases, APIs, applications, files, data warehouses, data lakes, and operational systems without requiring you to replace your core infrastructure.' },
+  { q: 'Can Morphiic process large volumes of enterprise data?', a: 'Yes. Morphiic is designed for scalable data processing workflows, supporting large datasets and distributed processing environments. This allows organizations to expand their data operations without relying on increasingly manual transformation processes.' },
+  { q: 'How does Morphiic improve data quality?', a: 'Morphiic helps validate, normalize, standardize, and monitor enterprise data throughout the transformation process. It can also identify duplicates and schema inconsistencies, helping teams establish more reliable datasets for downstream use.' },
+  { q: 'Can Morphiic prepare data for AI and machine learning?', a: 'Yes. Morphiic transforms raw and fragmented enterprise information into structured, enriched, and validated datasets that can serve as stronger foundations for analytics, machine learning, automation, and AI applications.' },
+  { q: 'What types of teams can benefit from Morphiic?', a: 'Morphiic is designed for data engineering, analytics, AI/ML, data platform, and enterprise IT teams. It can also support organizations where multiple teams depend on reliable, accessible, and consistently structured enterprise data.' },
+  { q: 'Does Morphiic support data enrichment?', a: 'Yes. Morphiic can enrich enterprise information with contextual data, entity identification, metadata, and additional information, helping organizations create datasets with greater context and downstream value.' },
+  { q: 'Can Morphiic integrate with modern AI and data technologies?', a: 'Morphiic is designed for modern enterprise data and AI environments. Its technical ecosystem can support technologies such as RAPIDS, CUDA, NeMo, and Triton, depending on the deployment and integration requirements.' },
+  { q: 'How can my organization get started with Morphiic?', a: 'Start by sharing your current data environment, transformation challenges, and business requirements with the Morphiic team. From there, the appropriate deployment, processing capacity, integrations, and commercial model can be evaluated for your organization.' },
 ];
 
 export type ArchLayer = { label: string; icon: LucideIcon };

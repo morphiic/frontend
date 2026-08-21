@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
+    "@paypal/react-paypal-js": "^10.3.0",
     "@supabase/supabase-js": "^2.57.4",
     "framer-motion": "^13.1.0",
     "lucide-react": "^0.446.0",
